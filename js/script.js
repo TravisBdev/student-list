@@ -4,14 +4,16 @@ Treehouse Techdegree:
 FSJS Project 2 - Data Pagination and Filtering
 */
 
-
+// Creates and appends elements to print a page of 9 students per page
 let itemsPerPage = 9;
 
 const showPage = function(list, page){
     let startIndex = page * itemsPerPage - itemsPerPage;
     let endIndex = page * itemsPerPage;
+
     let studentList = document.querySelector('.student-list');
     studentList.innerHTML = '';
+// loop iterates over student in the list
     for(let i = 0; i < list.length; i++){
         if(i >= startIndex && i < endIndex){
             let studentItem = `
@@ -22,6 +24,7 @@ const showPage = function(list, page){
                     <span class='date'> ${list[i].registered.date}</span>
                 </div>
             </li>`;
+
             studentList.insertAdjacentHTML("beforeend", studentItem);
 
         }
@@ -30,7 +33,7 @@ const showPage = function(list, page){
 }
 
 
-
+// Creates and appends pagination buttons
 const addPagination = function(list){
     let numOfPages = Math.ceil(list.length / itemsPerPage);
     let linkList = document.querySelector('.link-list');
