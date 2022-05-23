@@ -6,13 +6,14 @@ FSJS Project 2 - Data Pagination and Filtering
 
 // Creates and appends elements to print a page of 9 students per page
 let itemsPerPage = 9;
+let studentList = document.querySelector('.student-list');
+let linkList = document.querySelector('.link-list');
 
 const showPage = function(list, page){
-    let startIndex = page * itemsPerPage - itemsPerPage;
-    let endIndex = page * itemsPerPage;
-
-    let studentList = document.querySelector('.student-list');
+    let startIndex = (page * itemsPerPage) - itemsPerPage;
+    let endIndex = (page * itemsPerPage); 
     studentList.innerHTML = '';
+
 // loop iterates over student in the list
     for(let i = 0; i < list.length; i++){
         if(i >= startIndex && i < endIndex){
@@ -36,9 +37,9 @@ const showPage = function(list, page){
 // Creates and appends pagination buttons
 const addPagination = function(list){
     let numOfPages = Math.ceil(list.length / itemsPerPage);
-    let linkList = document.querySelector('.link-list');
     linkList.innerHTML = '';
-    for(let i = 1; i < numOfPages; i++){
+
+    for(let i = 1; i <= numOfPages; i++){
         let button = `
             <li>
                 <button type='button'>${i}</button>
@@ -65,3 +66,5 @@ const addPagination = function(list){
 // Call functions
 showPage(data, 1);
 addPagination(data);
+
+
